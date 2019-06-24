@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/txtNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Barang"
+            android:textSize="17sp"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/txtSKU"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNama"
+            android:text="Kode"
+            android:textColor="#3A3A3A" />
+
+        <TextView
+            android:id="@+id/stok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSKU"
+            android:text="Stok : "
+            android:textColor="#3A3A3A" />
+
+        <TextView
+            android:id="@+id/txtStok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSKU"
+            android:layout_toRightOf="@id/stok"
+            android:textColor="#3A3A3A"/>
+
+        <TextView
+            android:id="@+id/txtGambar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtStok"
+            android:text="Gambar"
+            android:textColor="#3A3A3A" />
+
+    </RelativeLayout>
+
+    <!--<TableLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:padding="8dp">-->
+
+    <!--<TableRow>-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text="Nama" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text=" : " />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtNama"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"/>-->
+    <!--</TableRow>-->
+
+    <!--<TableRow>-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text="SKU" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text=" : " />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtSKU"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"/>-->
+    <!--</TableRow>-->
+
+    <!--<TableRow>-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text="Stok" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text=" : " />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtStok"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"/>-->
+    <!--</TableRow>-->
+
+    <!--<TableRow>-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text="Gambar" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:text=" : " />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtGambar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@android:color/black"/>-->
+    <!--</TableRow>-->
+
+    <!--</TableLayout>-->
+
+</android.support.v7.widget.CardView>

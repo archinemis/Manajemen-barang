@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">BarangKu</string>
+    <string name="hint_nama">Nama</string>
+    <string name="hint_nim">Nim</string>
+    <string name="hint_jenkel">Jenis Kelamin</string>
+    <string name="hint_laki">Laki Laki</string>
+    <string name="hint_perempuan">Perempuan</string>
+    <string name="text_prodi">Program Strudi</string>
+    <string name="judul_register">Register Mahasiswa</string>
+
+    <string-array name="prodi">
+        <item>S1 Sistem Informasi</item>
+        <item>S1 Sistem Komputer</item>
+        <item>S1 Desain Komunikasi Visual</item>
+        <item>S1 Manajemen</item>
+    </string-array>
+</resources>
