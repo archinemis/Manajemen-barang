@@ -51,10 +51,12 @@ public class UpdateStok extends AppCompatActivity {
         setContentView(R.layout.activity_update_stok);
         ButterKnife.bind(this);
 
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Daftar Stok");
+        getSupportActionBar().setTitle("Daftar Barang");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mToolbar.setNavigationIcon(R.drawable.ic_kembali);
 
         Intent i = getIntent();
         String sku = i.getStringExtra("sku");
@@ -91,7 +93,7 @@ public class UpdateStok extends AppCompatActivity {
         //mengambil data dari edittext
         String sku = txtSku.getText().toString();
         String jumlah = txtJml.getText().toString();
-        String desc = "Mengurangi";
+        String desc = "Dikurangi";
         String tgl = txtTanggal.getText().toString();
 
         RegisterAPI api = getAPI.getRetrofit().create(RegisterAPI.class);
@@ -102,8 +104,8 @@ public class UpdateStok extends AppCompatActivity {
                 String value = response.body().getValue();
                 String message = response.body().getMessage();
                 progress.dismiss();
+                finish();
                 if (value.equals("1")) {
-                    finish();
                     Toast.makeText(UpdateStok.this, message, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(UpdateStok.this, message, Toast.LENGTH_SHORT).show();
@@ -128,7 +130,7 @@ public class UpdateStok extends AppCompatActivity {
         //mengambil data dari edittext
         String sku = txtSku.getText().toString();
         String jumlah = txtJml.getText().toString();
-        String desc = "Menambah";
+        String desc = "Ditambah";
         String tgl = txtTanggal.getText().toString();
 
         RegisterAPI api = getAPI.getRetrofit().create(RegisterAPI.class);
@@ -139,8 +141,8 @@ public class UpdateStok extends AppCompatActivity {
                 String value = response.body().getValue();
                 String message = response.body().getMessage();
                 progress.dismiss();
+                finish();
                 if (value.equals("1")) {
-                    finish();
                     Toast.makeText(UpdateStok.this, message, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(UpdateStok.this, message, Toast.LENGTH_SHORT).show();
@@ -153,5 +155,11 @@ public class UpdateStok extends AppCompatActivity {
                 Toast.makeText(UpdateStok.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
 }

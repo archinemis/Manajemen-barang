@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.UpdateStok"></activity>
+        <activity android:name=".View.ManajemenLog"></activity>
+        <activity android:name=".View.UpdateStok" />
         <activity android:name=".View.ManajemenStok" />
         <activity android:name=".View.UpdateData" />
         <activity android:name=".View.ManajemenBarang" />

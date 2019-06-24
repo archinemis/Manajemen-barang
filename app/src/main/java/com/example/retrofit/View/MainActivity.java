@@ -51,5 +51,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    @OnClick(R.id.logStok) void manajemenLog(){
+        Intent i = new Intent(MainActivity.this,ManajemenLog.class);
+        startActivity(i);
+    }
+
 
 }

@@ -1,7 +1,6 @@
 package com.example.retrofit.View;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,9 +11,12 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.retrofit.Adapter.AdapterLog;
 import com.example.retrofit.Adapter.AdapterStok;
-import com.example.retrofit.Adapter.RecyclerViewAdapter;
 import com.example.retrofit.Controller.RegisterAPI;
+import com.example.retrofit.Controller.getAPI;
+import com.example.retrofit.Model.LogBarang;
+import com.example.retrofit.Model.LogValue;
 import com.example.retrofit.Model.Result;
 import com.example.retrofit.Model.Value;
 import com.example.retrofit.R;
@@ -30,13 +32,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ManajemenStok extends AppCompatActivity {
+public class ManajemenLog extends AppCompatActivity {
 
     private Intent mIntent;
     private Toolbar mToolbar;
     public static final String url = "https://denandra.000webhostapp.com/";
-    private List<Result> results = new ArrayList<>();
-    private AdapterStok viewAdapter;
+    private List<LogBarang> results = new ArrayList<>();
+    private AdapterLog viewAdapter;
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecycleerView;
@@ -46,17 +48,17 @@ public class ManajemenStok extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manajemen_stok);
+        setContentView(R.layout.activity_manajemen_log);
         ButterKnife.bind(this);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Manajemen Stok");
+        getSupportActionBar().setTitle("Log Barang");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         mToolbar.setNavigationIcon(R.drawable.ic_kembali);
 
-        viewAdapter = new AdapterStok(this, results);
+        viewAdapter = new AdapterLog(this, results);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecycleerView.setItemAnimator(new DefaultItemAnimator());
         mRecycleerView.setLayoutManager(mLayoutManager);
@@ -66,28 +68,24 @@ public class ManajemenStok extends AppCompatActivity {
     }
 
     private void loadDataBarang(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(url)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        RegisterAPI api = retrofit.create(RegisterAPI.class);
-        Call<Value> call = api.view();
-        call.enqueue(new Callback<Value>() {
+        RegisterAPI api = getAPI.getRetrofit().create(RegisterAPI.class);
+        Call<LogValue> call = api.log();
+        call.enqueue(new Callback<LogValue>() {
             @Override
-            public void onResponse(Call<Value> call, Response<Value> response) {
+            public void onResponse(Call<LogValue> call, Response<LogValue> response) {
                 String value = response.body().getValue();
                 if (value.equals("1")){
                     mprogressBar.setVisibility(View.GONE);
                     results = response.body().getResult();
-                    viewAdapter = new AdapterStok(ManajemenStok.this, results);
+                    viewAdapter = new AdapterLog(ManajemenLog.this, results);
                     mRecycleerView.setAdapter(viewAdapter);
                 }
             }
 
             @Override
-            public void onFailure(Call<Value> call, Throwable t) {
+            public void onFailure(Call<LogValue> call, Throwable t) {
 //                progressBar.setVisibility(View.GONE);
-                Toast.makeText(ManajemenStok.this,"Gagal",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManajemenLog.this,"Gagal",Toast.LENGTH_SHORT).show();
             }
         });
     }

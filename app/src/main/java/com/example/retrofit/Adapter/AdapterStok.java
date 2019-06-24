@@ -30,7 +30,7 @@ public class AdapterStok extends RecyclerView.Adapter<AdapterStok.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_stok, parent, false);
         ViewHolder holder = new ViewHolder(v);
 
         return holder;
@@ -42,7 +42,6 @@ public class AdapterStok extends RecyclerView.Adapter<AdapterStok.ViewHolder> {
         holder.txtsku.setText(results.getSku());
         holder.txtnama.setText(results.getNama());
         holder.txtstok.setText(results.getStok());
-        holder.txtgambar.setText(results.getGambar());
     }
 
     @Override
@@ -58,8 +57,6 @@ public class AdapterStok extends RecyclerView.Adapter<AdapterStok.ViewHolder> {
         TextView txtnama;
         @BindView(R.id.txtStok)
         TextView txtstok;
-        @BindView(R.id.txtGambar)
-        TextView txtgambar;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -72,13 +69,11 @@ public class AdapterStok extends RecyclerView.Adapter<AdapterStok.ViewHolder> {
             String sku = txtsku.getText().toString();
             String nama = txtnama.getText().toString();
             String stok = txtstok.getText().toString();
-            String gambar = txtgambar.getText().toString();
 
             Intent i = new Intent(context, UpdateStok.class);
             i.putExtra("sku",sku);
             i.putExtra("nama",nama);
             i.putExtra("stok",stok);
-            i.putExtra("gambar",gambar);
             context.startActivity(i);
         }
     }

@@ -41,7 +41,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.txtsku.setText(results.getSku());
         holder.txtnama.setText(results.getNama());
         holder.txtstok.setText(results.getStok());
-        holder.txtgambar.setText(results.getGambar());
     }
 
     @Override
@@ -57,8 +56,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView txtnama;
         @BindView(R.id.txtStok)
         TextView txtstok;
-        @BindView(R.id.txtGambar)
-        TextView txtgambar;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -71,13 +68,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             String sku = txtsku.getText().toString();
             String nama = txtnama.getText().toString();
             String stok = txtstok.getText().toString();
-            String gambar = txtgambar.getText().toString();
 
             Intent i = new Intent(context, UpdateData.class);
             i.putExtra("sku",sku);
             i.putExtra("nama",nama);
             i.putExtra("stok",stok);
-            i.putExtra("gambar",gambar);
             context.startActivity(i);
         }
     }

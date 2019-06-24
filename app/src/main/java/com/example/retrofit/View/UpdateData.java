@@ -82,8 +82,8 @@ public class UpdateData extends AppCompatActivity {
                 String value = response.body().getValue();
                 String message = response.body().getMessage();
                 progress.dismiss();
+                finish();
                 if (value.equals("1")){
-                    finish();
                     Toast.makeText(UpdateData.this, message, Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(UpdateData.this, message, Toast.LENGTH_SHORT).show();

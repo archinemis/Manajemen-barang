@@ -1,5 +1,7 @@
 package com.example.retrofit.Controller;
 
+import com.example.retrofit.Model.LogBarang;
+import com.example.retrofit.Model.LogValue;
 import com.example.retrofit.Model.Value;
 
 import retrofit2.Call;
@@ -43,4 +45,7 @@ public interface RegisterAPI {
             @Field("desc") String desc,
             @Field("tgl") String tgl
     );
+
+    @GET("/selectLog.php")
+    Call<LogValue> log();
 }
