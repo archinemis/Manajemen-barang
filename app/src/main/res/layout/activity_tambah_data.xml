@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,11 +21,54 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/imgGambar"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/picture"/>
+
+            <ImageView
+                android:id="@+id/tambahGambar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_tambah_gambar"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Barang"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="4dp"/>
+
             <EditText
                 android:id="@+id/nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_nama" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SKU Barang"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stok Barang"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,12 +97,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Gambar" />
-
-            <Button
-                android:id="@+id/addGambar"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Tambah Gambar"/>
 
             <Button
                 android:id="@+id/submit"

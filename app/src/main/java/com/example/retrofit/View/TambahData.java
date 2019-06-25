@@ -1,12 +1,24 @@
 package com.example.retrofit.View;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.nfc.Tag;
+import android.provider.MediaStore;
+import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -17,8 +29,11 @@ import com.example.retrofit.Controller.getAPI;
 import com.example.retrofit.Model.Value;
 import com.example.retrofit.R;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,8 +54,12 @@ public class TambahData extends AppCompatActivity {
     EditText txtGambar;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.imgGambar)
+    ImageView mGambar;
 
     private ProgressDialog progress;
+    private static final int REQUEST_GALLERY_CODE = 1;
+    String imgDecodableString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +80,39 @@ public class TambahData extends AppCompatActivity {
         return true;
     }
 
+    //intent ke gallery
+    @OnClick(R.id.tambahGambar) void tambah(){
+        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i,REQUEST_GALLERY_CODE);
+    }
+
+    //menambah gambar ke imgView
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        try{
+            if (requestCode == REQUEST_GALLERY_CODE && resultCode == RESULT_OK && null != data){
+                Uri selectedImg = data.getData();
+                String[] filePath = {MediaStore.Images.Media.DATA};
+
+                Cursor cursor = getContentResolver().query(selectedImg,filePath,null,null,null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePath[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                mGambar.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+
+            }else{
+                Toast.makeText(this, "Tidak ada gambar dipilih", Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e){
+            Toast.makeText(this, "Error! ", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    //proses insert
     public void insert(View view) {
         progress = new ProgressDialog(this);
         progress.setCancelable(false);
