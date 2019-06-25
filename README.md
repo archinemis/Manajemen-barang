@@ -1,1 +1,1 @@
-Android app using sql for db and retrofit to get data
+Android inventory system app using sql for database and retrofit to get data
