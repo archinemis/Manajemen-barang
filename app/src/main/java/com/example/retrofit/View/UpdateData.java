@@ -30,8 +30,6 @@ public class UpdateData extends AppCompatActivity {
     EditText txtNama;
     @BindView(R.id.stok)
     EditText txtStok;
-    @BindView(R.id.gambar)
-    EditText txtGambar;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
@@ -49,6 +47,7 @@ public class UpdateData extends AppCompatActivity {
         getSupportActionBar().setTitle("Ubah Barang");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mToolbar.setNavigationIcon(R.drawable.ic_kembali);
 
         Intent i = getIntent();
         String sku = i.getStringExtra("sku");
@@ -59,7 +58,6 @@ public class UpdateData extends AppCompatActivity {
         txtSku.setText(sku);
         txtNama.setText(nama);
         txtStok.setText(stok);
-        txtGambar.setText(gambar);
         oldSku = sku;
     }
 
@@ -72,10 +70,9 @@ public class UpdateData extends AppCompatActivity {
         String sku = txtSku.getText().toString();
         String nama = txtNama.getText().toString();
         String stok = txtStok.getText().toString();
-        String gambar = txtGambar.getText().toString();
 
         RegisterAPI api = getAPI.getRetrofit().create(RegisterAPI.class);
-        Call<Value> call = api.ubah(oldSku,sku,nama,stok,gambar);
+        Call<Value> call = api.ubah(oldSku,sku,nama,stok);
         call.enqueue(new Callback<Value>() {
             @Override
             public void onResponse(Call<Value> call, Response<Value> response) {

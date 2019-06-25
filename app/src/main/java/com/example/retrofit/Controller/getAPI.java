@@ -1,5 +1,6 @@
 package com.example.retrofit.Controller;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -9,6 +10,8 @@ public class getAPI {
 
     public static Retrofit getRetrofit(){
         if (retrofit == null){
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(URL)
                     .addConverterFactory(GsonConverterFactory.create())
